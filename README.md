@@ -1,7 +1,7 @@
 # Catalog-Hackathon-4
 
 ####CHILD VACCINATION MANAGEMENT SYSTEM:
-Child vaccination is a huge challenge which is being faced by parents to enhance their chid's immune system and to reduce the risk for infectious diseases.In this particular scenario we majorly focus on the easy scheduling of child vaccination.
+Child vaccination is a huge challenge which is being faced by parents to enhance their chiLD's immune system and to reduce the risk for infectious diseases.In this particular scenario we majorly focus on the easy scheduling of child vaccination.
 
 MAJOR CHALLENGES FACED DURING CHILD VACCINATION:
 1)Healthcare Infrastructure
@@ -35,7 +35,7 @@ def print_vaccination_schedule(schedule):
     for vaccine,date in schedule.items():
         print(f"{vaccine}:)
 def main()
-birth_date_str = input("Enter the child's birth date (YYYY-MM-DD):")
+birth_date_str=input("Enter the child's birth date (YYYY-MM-DD):")
     try:                                                                                 /////Calculating and displaying the vaccination schedule
         birth_date=datetime.strptime(birth_date_str,"%Y-%m-%d")
         schedule=calculate_vaccination_schedule(birth_date)
@@ -43,7 +43,7 @@ birth_date_str = input("Enter the child's birth date (YYYY-MM-DD):")
         
 except ValueError:
         print("Invalid date format.Please enter the date in YYYY-MM-DD format.")
-if __name__ == "__main__":
+if __name__=="__main__":
     main()
 
 
