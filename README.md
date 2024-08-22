@@ -49,7 +49,6 @@ class VotingSystem:
 candidates=["Ana","anjali","Sanjana"]
 voting_system =VotingSystem(candidates)
 
-# Register voters
 voting_system.register_voter("Voter1")
 voting_system.register_voter("Voter2")
 voting_system.cast_vote("Voter1","Ana")
