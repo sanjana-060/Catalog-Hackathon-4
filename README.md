@@ -1,53 +1,62 @@
-# Catalog-Hackathon-4
+# Catalog-Hackathon-5
 
-####CHILD VACCINATION MANAGEMENT SYSTEM:
-Child vaccination is a huge challenge which is being faced by parents to enhance their chiLD's immune system and to reduce the risk for infectious diseases.In this particular scenario we majorly focus on the easy scheduling of child vaccination.
+###Voting case scenario to implement it in a simple and easy manner without fraud.
 
-MAJOR CHALLENGES FACED DURING CHILD VACCINATION:
-1)Healthcare Infrastructure
-2)Cost
-3)Lack of awarness
-4)misinformation
-5)Fear of side effects
+///The code for implementation of the voting system to prevent fraud and to ensure smooth voting..
 
------------------------->We try to implement the code for easy scheduling of child vaccination by using the childs's professional and personal data.
-The major objective of this is to implement it in a user-friendly manner.
+-----The functions used in this case scenario include--
 
------------------------->CODE FOR IMPLEMENTATION:
+1)Voter registration
 
-Two functions are being implemented in this code one is for calculating the vacination schedule and the other is to print the vaccination schedule.
-We take the child's birth date as input and the schedule is printed accordingly.
+2)Vote casting
 
-from datetime import datetime,timedelta
-def calculate_vaccination_schedule(birth_date):
-    schedule ={
-        "Hepatitis B (1st dose)":birth_date+timedelta(weeks=0),
-        "Hepatitis B (2nd dose)":birth_date+timedelta(weeks=4),
-        "DTaP (1st dose)":birth_date+timedelta(weeks=8),
-        "DTaP (2nd dose)":birth_date+timedelta(weeks=16),
-        "DTaP (3rd dose)":birth_date+timedelta(weeks=24),
-        "MMR (1st dose)":birth_date+timedelta(weeks=52),
-        "Varicella (Chickenpox)":birth_date+timedelta(weeks=52),
-        }
-    return schedule
-def print_vaccination_schedule(schedule):
-    print("\nVaccination Schedule:")
-    for vaccine,date in schedule.items():
-        print(f"{vaccine}:)
-def main()
-birth_date_str=input("Enter the child's birth date (YYYY-MM-DD):")
-    try:                                                                                 /////Calculating and displaying the vaccination schedule
-        birth_date=datetime.strptime(birth_date_str,"%Y-%m-%d")
-        schedule=calculate_vaccination_schedule(birth_date)
-        print_vaccination_schedule(schedule)
-        
-except ValueError:
-        print("Invalid date format.Please enter the date in YYYY-MM-DD format.")
-if __name__=="__main__":
-    main()
+3)Vote counting
 
+class VotingSystem:
+    def __init__(self, candidates):
+        self.candidates = {candidate: 0 for candidate in candidates}
+        self.registered_voters = set()  # To store registered voters
+        self.voted_voters = set()       # To store voters who have already voted
+    def register_voter(self, voter_id):
+        if voter_id in self.registered_voters:
+            print(f"Voter {voter_id} is already registered.")
+        else:
+            self.registered_voters.add(voter_id)
+            print(f"Voter {voter_id} registered successfully.")
+    def cast_vote(self, voter_id, candidate):
+        # Ensure the voter is registered and hasn't voted yet
+        if voter_id not in self.registered_voters:
+            print("You are not a registered voter.")
+        elif voter_id in self.voted_voters:
+            print("You have already voted.")
+        elif candidate not in self.candidates:
+            print(f"Candidate {candidate} is not valid.")
+        else:
+            # Record the vote
+            self.candidates[candidate]+= 1
+            self.voted_voters.add(voter_id)
+            print(f"Vote for {candidate} cast successfully.")
+     def tally_votes(self):
+        # Print the vote counts for all candidates
+        print("\nVote Tally:")
+        for candidate,votes in self.candidates.items():
+            print(f"{candidate}: {votes} votes")
+     def get_winner(self):
+        #candidate with the most votes
+        winner = max(self.candidates,key=self.candidates.get)
+        print(f"\nWinner: {winner}")
 
-****IF THE DATE OF BIRTH OF A PARTICULAR CHILD IS TAKEN AS INPUT THE TOTAL VACCINATION SCHEDULE WILL BE PRINTED ACCORDINGLY.THIS MAKES THE VACCINATION TASKS EASIER.
+candidates=["Ana","anjali","Sanjana"]
+voting_system =VotingSystem(candidates)
+
+# Register voters
+voting_system.register_voter("Voter1")
+voting_system.register_voter("Voter2")
+voting_system.cast_vote("Voter1","Ana")
+voting_system.cast_vote("Voter2","Bobby")
+
+voting_system.tally_votes()
+voting_system.get_winner()
 
 
 
